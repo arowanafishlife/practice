@@ -1,0 +1,31 @@
+{% extends 'sns/layout.html' %}
+
+{% block title %}Profile{% endblock %}
+
+{% block header %}
+<h2 class="display-4 text-primary">{{target_user.username}}</h2>
+<!-- システムメッセージ -->
+{% if messages %} 
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} 
+        class="{{ message.tags }}"
+        {% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+{% endblock %}
+
+{% block content %}
+
+<p>フォロワー：{{followed_size}}</p>
+<hr>
+{% for item in profiles %}
+<p><a href="{% url 'profile' %}{{item.owner.id}}">{{item.owner}}</a></p>
+<p>{{item.content}}</p>
+<hr>
+{% endfor %}
+
+<a href="{% url 'profile' %}{{target_user.id}}">戻る</a>
+
+{% endblock %}
