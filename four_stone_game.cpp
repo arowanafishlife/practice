@@ -523,8 +523,8 @@ int main(){
       if(turn_count>1 && input_h==-1 && input_i==-1 && input_j==-1){
         turn_count-=2;
         board_log.pop();
-        board = board_log.top();
         board_log.pop();
+        board = board_log.top();
 
         cout << endl;
         cout << "2手巻き戻しました。" << endl;
